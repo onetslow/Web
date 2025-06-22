@@ -246,7 +246,7 @@ h1.titles {
 @media (max-width: 768px)
 {
     .container {
-        width: 100%; /* меняем ширину контейнера на 100% на маленьких экранах */
+        width: 100%; 
       } 
       
     .intro_img
@@ -254,5 +254,3 @@ h1.titles {
         width: 500px;
     }
 }
-
- 

@@ -10,9 +10,13 @@
 <body>
 
 <?php
-session_start(["use_strict_mode" => true]);
-include ("dbconfig.php");
+session_start();
 include ("header.php");
+
+if (!empty($_SESSION['message'])) {
+    echo '<div style="text-align: center; margin: 20px auto;">' . htmlspecialchars($_SESSION['message']) . '</div>';
+    unset($_SESSION['message']);
+}
 
 if (isset($_GET['page'])) {
     switch ($_GET['page']) {

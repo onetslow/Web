@@ -6,14 +6,16 @@
     <?php  include_once 'link.php' ?>
 </head>
 <?php
-    session_start(["use_strict_mode" => true]);
+    session_start();
     
     if (isset($_SESSION['login'])) {
         $text = $_SESSION['login'];
-        $link = 'profile.php';
+        $link = '#';
+        $showLogout = true;
     } else {
         $text = 'Вход';
         $link = 'login.php';
+        $showLogout = false;
     }
 ?>
 
@@ -27,7 +29,12 @@
                 <a class="nav_link" href="index.php?page=main">Главная</a>
                 <a class="nav_link" href="index.php?page=register">Регистрация</a>
             </nav>
-            <a class="nav_link" href="<?php echo $link ?>"><?php echo $text ?></a>
+            <div class="re">
+                <a class="nav_link" href="<?php echo $link ?>"><?php echo $text ?></a>
+                <?php if ($showLogout): ?>
+                    <a href="auth.php?out=1" class="logout-link">Выйти</a>
+                <?php endif; ?>  
+            </div> 
         </div>
     </div>
 </header>
