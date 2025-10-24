@@ -1,24 +1,31 @@
 <?php
-session_start();
-
-$static_login = 'admin';
-$static_password = '12345';
+ session_start(["use_strict_mode" => true]);
+ require('dbconnect.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $login = $_POST['login'] ?? '';
     $password = $_POST['password'] ?? '';
 
-    if ($login === $static_login && $password === $static_password) {
-        $_SESSION['login'] = $login;
-        $_SESSION['message'] = "Добро пожаловать, $login!";
-        header("Location: index.php");
-    } else {
-        unset($_SESSION['login']); 
-        $_SESSION['message'] = "Неверный логин или пароль.";
+    if (empty($login) || empty($password)) {
+        $_SESSION['message'] = "Поля логина и пароля обязательны для заполнения.";
         header("Location: login.php");
+        exit;
     }
 
-    exit;
+    $stmt = $db->prepare("SELECT * FROM users WHERE name = :name");
+    $stmt->execute(['name' => $login]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($user && md5($password) === $user['password']) {
+        $_SESSION['login'] = $user['name'];
+        $_SESSION['message'] = "Добро пожаловать, {$user['name']}!";
+        header("Location: index.php");
+        exit;
+    } else {
+        $_SESSION['message'] = "Неверный логин или пароль.";
+        header("Location: login.php");
+        exit;
+    }
 }
 
 if (isset($_GET['out'])) {
