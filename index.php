@@ -10,7 +10,8 @@
 <body>
 
 <?php
-session_start();
+session_start(["use_strict_mode" => true]);
+include ("dbconfig.php");
 include ("header.php");
 
 if (!empty($_SESSION['message'])) {
@@ -36,3 +37,4 @@ include_once ("footer.php");
 ?>
 
 </body>
+</html>

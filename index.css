@@ -243,14 +243,15 @@ h1.titles {
     text-align: center;
 }
 
-@media (max-width: 768px)
+@media (max-width: 800px)
 {
     .container {
         width: 100%; 
+
       } 
       
     .intro_img
     {
-        width: 500px;
+        width: 100px;
     }
 }

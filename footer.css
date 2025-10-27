@@ -1,6 +1,7 @@
 .footer 
 {
     margin-top: 20px;
+    width: 100%;
 }
 
 .footer_text
@@ -17,4 +18,16 @@
 {
     color: rgb(192, 192, 192);
     margin: 0;
+}
+
+@media (max-device-width: 800px) {
+    .footer {
+        margin-top: 15px;
+        width: 100%;
+    }
+    
+    .footer_text > p {
+        font-size: 16px;
+        padding: 0 20px;
+    }
 }

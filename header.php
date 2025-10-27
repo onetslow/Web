@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php  include_once 'link.php' ?>
+    <link rel="stylesheet" href="index.css">
 </head>
 <?php
-    session_start();
+    session_start(["use_strict_mode" => true]);
     
     if (isset($_SESSION['login'])) {
         $text = $_SESSION['login'];
-        $link = '#';
+        $link = 'profile.php';
         $showLogout = true;
     } else {
         $text = 'Вход';

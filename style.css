@@ -24,3 +24,27 @@ h1, h2, h3, h4, h5, h6  {
     
     flex: 1; 
 }
+
+/* Для экранов до 800px */
+@media (max-device-width: 800px) {
+    body { font-size: 18px; }
+    .main { padding: 15px; }
+    .container { padding: 0 15px; }
+    h1 { font-size: 28px; }
+    h2 { font-size: 24px; }
+    h3 { font-size: 20px; }
+}
+
+/* Для экранов до 400px */
+@media (max-device-width: 400px) {
+    body { font-size: 16px; }
+    .main { padding: 10px; }
+    .container { padding: 0 10px; }
+    h1 { font-size: 24px; text-align: center; }
+    h2 { font-size: 20px; }
+    h3 { font-size: 18px; }
+    img { max-width: 100%; height: auto; }
+    button { width: 100%; padding: 12px; font-size: 16px; }
+    .article_1, .sect_c { flex-direction: column; }
+    .text2, .image { width: 100%; text-align: center; }
+}
